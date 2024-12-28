@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            font-size: 50px;
+            border: 2px solid black;
+            background-color: blue;
+            padding-left: 490px;
+            height: 10vh;
+        }
+        body {
+            background-color: orangered;
+            width: 99%;
+        }
+        #heading input {
+            width: 12%;
+            border-radius: 20px;
+        }
+        
+        #cvOutput p {
+            font-size: 20px;
+            margin: 5px 0;
+        }
+        
+        #cvOutput .right-align {
+            text-align: right;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .row div {
+            width: 48%;
+        }
+
+        .row div p {
+            margin: 0;
+        }
+
+        .heading {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 5px;
+        }
+
+        
+        .vertical-line {
+            border-left: 2px solid black;
+            height: 100%;
+        }
+
+        .achievements {
+            margin-top: 10px;
+        }
+
+        
+        hr {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 0;
+            border-top: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>CV MAKER</h1>
+    <div id="heading">
+        <input type="text" id="name" placeholder="NAME">
+        <input type="text" id="contact" placeholder="CONTACT">
+        <input type="text" id="email" placeholder="EMAIL">
+        <input type="text" id="address" placeholder="ADDRESS">
+        <input type="text" id="skills" placeholder="SKILLS">
+        <input type="text" id="education" placeholder="Education">
+        <input type="text" id="achievements" placeholder="ACHIEVEMENTS">
+        <button onclick="getCV()">generate</button>
+    </div>
+
+    <div id="cvOutput"></div>
+
+    <script>
+        function getCV() {
+            var name = document.getElementById("name").value;
+            var contact = document.getElementById("contact").value;
+            var email = document.getElementById("email").value;
+            var address = document.getElementById("address").value;
+            var skills = document.getElementById("skills").value;
+            var education = document.getElementById("education").value;
+            var achievements = document.getElementById("achievements").value;
+
+            var output = `
+            <p class="heading">personal info</p>
+                <p>${name}</p>
+                <div class="right-align">
+                    <p>${contact}</p>
+                    <p>${email}</p>
+                </div>
+                <hr />
+                <div class="row">
+                    <div>
+                        <p class="heading">Address</p>
+                        <p>${address}</p>
+                    </div>
+                    <div class="vertical-line"></div> <!-- Vertical line between Address and Skills -->
+                    <div>
+                        <p class="heading">Skills</p>
+                        <p>${skills}</p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div>
+                        <p class="heading">Education</p>
+                        <p>${education}</p>
+                    </div>
+                    <div class="vertical-line"></div> <!-- Vertical line between Education and Achievements -->
+                    <div>
+                        <p class="heading">Achievements</p>
+                        <p>${achievements}</p>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById("cvOutput").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
